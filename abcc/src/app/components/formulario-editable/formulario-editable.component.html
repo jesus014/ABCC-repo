@@ -1,0 +1,155 @@
+
+<!--<app-buscador  [childMessage]="parentMessage"></app-buscador>
+<hr>
+<div>
+-->
+
+<h1>Editar registro</h1>
+
+<form (ngSubmit)="onSubmit()" [formGroup]="contactForm" class="needs-validation">
+
+  <div class="form-row">
+    <div class="col-md-6 mb-3">
+      <label >sku</label>
+      <input type="number"
+       class="form-control"
+        placeholder="Numero sku"
+        formControlName="sku"
+        id="sku" name="sku"
+         >
+    </div>
+    <div *ngIf= "contactForm.get('sku')?.touched && contactForm.get('sku')?.errors?.['required']" class="alert alert-danger">This field is required</div>
+    <div class="col-md-3 mb-3">
+      <label><input type="checkbox" formControlName="descontinuado"> Descontinuado</label>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="col-md-9 mb-3">
+      <label >articulo</label>
+      <input type="text"
+       class="form-control"
+        placeholder="Articulo"
+        formControlName="articulos"
+        id="articulos" name="articulos"
+        required>
+    </div>
+    <div *ngIf= "contactForm.get('articulo')?.touched && contactForm.get('articulo')?.errors?.['required']" class="alert alert-danger">This field is required</div>
+  </div>
+
+  <div class="form-row">
+    <div class="col-md-9 mb-3">
+      <label >marca</label>
+      <input type="text"
+       class="form-control"
+        placeholder="marca"
+        formControlName="marca"
+        >
+    </div>
+    <div *ngIf= "contactForm.get('marca')?.touched && contactForm.get('marca')?.errors?.['required']" class="alert alert-danger">This field is required</div>
+  </div>
+
+
+  <div class="form-row">
+    <div class="col-md-9 mb-3">
+      <label >modelo</label>
+      <input type="text"
+       class="form-control"
+        placeholder="modelo"
+        formControlName="modelo"
+         >
+    </div>
+    <div *ngIf= "contactForm.get('modelo')?.touched && contactForm.get('modelo')?.errors?.['required']" class="alert alert-danger">This field is required</div>
+  </div>
+
+  <div class="form-row">
+    <div class="col-md-9 mb-3">
+      <label >Selecciona un departamento</label>
+      <select class="form-control"  formControlName="departamento" [(ngModel)]="seleccionadoDepartamento" >
+        <option value="{{item.id}}" *ngFor="let item of valorDepartamento">{{item.nombreDepartamento}}</option>
+      </select>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="col-md-9 mb-3">
+      <label >Selecciona una clase</label>
+      <select class="form-control"  formControlName="clase" [(ngModel)]="seleccionadoClase"  >
+        <option value="{{item.id}}" *ngFor="let item of valorClase">{{item.nombreClase}}</option>
+      </select>
+      {{seleccionadoClase?.id}}
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="col-md-9 mb-3">
+      <label >Selecciona una familia</label>
+      <select class="form-control"  formControlName="familia" [(ngModel)]="seleccionadoFamilia" >
+       <option value="{{item.id}}" *ngFor="let item of valorFamilia">{{item.nombreFamilia}}</option>
+      </select>
+
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="col-md-9 mb-3">
+      <label >cantidad</label>
+      <input type="number"
+       class="form-control"
+        placeholder="cantidad"
+        formControlName="cantidad"
+        [(ngModel)]="cantidadNumber"
+        >
+    </div>
+    <div *ngIf= "contactForm.get('sku')?.touched && contactForm.get('sku')?.errors?.['required']" class="alert alert-danger">This field is required</div>
+  </div>
+
+  <div class="form-row">
+    <div class="col-md-9 mb-3">
+      <label >stock</label>
+      <input type="number"
+       class="form-control"
+        placeholder="stock"
+        formControlName="stock"
+        [(ngModel)]="stockNumber"
+        >
+    </div>
+    <div *ngIf= "contactForm.get('sku')?.touched && contactForm.get('sku')?.errors?.['required']" class="alert alert-danger">This field is required</div>
+  </div>
+  <div *ngIf="stockNumber > cantidadNumber" class="alert alert-danger">El valor   </div>
+
+
+  <div class="form-row">
+    <div class="col-md-9 mb-3">
+      <label >fecha alta</label>
+      <input type="date"
+       class="form-control"
+        placeholder="fecha alta"
+        formControlName="fechaAlta"
+        required>
+    </div>
+    <div *ngIf= "contactForm.get('sku')?.touched && contactForm.get('sku')?.errors?.['required']" class="alert alert-danger">This field is required</div>
+  </div>
+
+  <div class="form-row">
+    <div class="col-md-9 mb-3">
+      <label >fecha baja</label>
+      <input type="date"
+       class="form-control"
+        placeholder="fecha baja"
+        formControlName="fechaBaja"
+        required>
+    </div>
+    <div *ngIf= "contactForm.get('sku')?.touched && contactForm.get('sku')?.errors?.['required']" class="alert alert-danger">This field is required</div>
+  </div>
+
+
+
+
+<div class="d float-end">
+  <div >
+    <button class="btn btn-info btn-lg" >Send</button>
+  </div>
+</div>
+</form>
+
